@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html
+	xmlns:th="https://www.thymeleaf.org/"
+	th:replace="~{base::layout(~{::section})}"
+>
+<head>
+<meta charset="UTF-8">
+<title>Welcome to Home Page</title>
+</head>
+<body>
+	<section>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-6 offset-md-3">
+					<div class="my-card ">
+						<div class="container text-center">
+							<img
+								alt=""
+								style="width: 15%"
+								th:src="@{/image/registration_icon.png}"
+							>
+						</div>
+						<h1 class="text-center">Register here!!</h1>
+						<form
+							
+							th:action="@{/do_register}"
+							method="post"
+							th:object="${user}"
+						>
+							<!--  Name field -->
+							<div class="mb-3">
+								<label
+									for="inputName"
+									class="form-label"
+								>Your Name</label> <input
+									name="uName"
+									type="text"
+									class="form-control"
+									id="name"
+									aria-describedby="emailHelp"
+									placeholder="Enter Here"
+									th:value="${user.uName}"
+								>
+							</div>
+							<!--  Email field -->
+							<div class="mb-3">
+								<label
+									for="inputEmail1"
+									class="form-label"
+								>Your Email</label> <input
+									name="email"
+									type="email"
+									class="form-control"
+									id="email"
+									aria-describedby="emailHelp"
+									placeholder="Enter Here"
+									th:value="${user.email}"
+								>
+							</div>
+							<!--  Password field -->
+							<div class="mb-3">
+								<label
+									for="inputPassword"
+									class="form-label"
+								>Your Password</label> <input
+								name="password"
+									type="password"
+									class="form-control"
+									id="password"
+									aria-describedby="emailHelp"
+									placeholder="Enter Here"
+								>
+							</div>
+							<!-- User About -->
+							<div class="mb-3">
+								<textarea
+									name="about"
+									class="form-control"
+									rows="7"
+									placeholder="Enter about yourself"
+									th:value="${user.about}"
+								></textarea>
+							</div>
+							<!-- Terms and conditions -->
+							<div class="container">
+								<input
+									type="checkbox"
+									class="form-check-input"
+									id="agreement"
+									name="agreement"
+								> <label
+									for="agreement"
+									class="form-label"
+								>Accept Terms and Conditions</label>
+							</div>
+							<!-- Submit and Reset Buttons -->
+							<div class="container text-center fw-bold">
+								<button class="btn btn-primary">Submit</button>
+								<button class="btn btn-secondary bg-warning">Reset</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</body>
+</html>
